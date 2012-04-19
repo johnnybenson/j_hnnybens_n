@@ -23,19 +23,24 @@
  font-style: normal;
 }
 
-@color-almostwhite:rgb(250,250,250);
-@color-translucentblack:rgba(0,0,0,0.8);
+@color-almostwhite:rgb(250,245,235);
+@color-translucentblack:rgba(0,0,0,0.7);
 @color-notblack:#222;
 @color-frontend:#FF1071;
 @color-code:#0fc;
 @color-design:#f0f;
 @color-forever:#0f0;
 @color-friends:#f00;
-@color-punkave:orange;
+@color-punkave:#ac3;
 @color-egwrk:#42312e;
 @color-examples:#000;
-
+@color-tumblr: #2C4762;
 @font-medium:"medium", Helvetica, Arial, Sans-serif;
+
+*
+{
+  -webkit-font-smoothing: antialiased;
+}
 
 .typo(@size:500%)
 {
@@ -186,7 +191,7 @@
   opacity: @opacity;
 }
 
-.transition-duration(@duration: 0.2s) {
+.transition-duration(@duration: 0.1s) {
   -moz-transition-duration: @duration;
   -webkit-transition-duration: @duration;
   transition-duration: @duration;
@@ -204,7 +209,7 @@
   transform:scale(@ratio);
 }
 
-.transition(@duration:0.4s, @ease:ease-out) {
+.transition(@duration:0.1s, @ease:ease) {
   -webkit-transition: all @duration @ease;
   -moz-transition: all @duration @ease;
   transition: all @duration @ease;
@@ -294,7 +299,7 @@ body
 
 body, button, input, select, textarea { font-family: sans-serif; color: @color-notblack; }
 
-h1, h2, h3, h4, h5, h6 { font-size:13px; line-height:1.1; }
+h1, h2, h3, h4, h5, h6 { font-size:13px; line-height:1.1; font-weight: normal; }
 
 /*
  * These selection declarations have to be separate
@@ -485,7 +490,7 @@ table { border-collapse: collapse; border-spacing: 0; }
 .wrapper
 {
   position: absolute;
-  top: 0; right: 0; bottom: 44px; left: 0;
+  top: 0; right: 0; bottom: 0; left: 0;
   overflow: hidden;
 }
 
@@ -493,41 +498,9 @@ table { border-collapse: collapse; border-spacing: 0; }
 {
 	position: absolute;
   bottom:0; right:0; left:0;
-  height: 44px;
+  height: 120px;
 	z-index: 999;
-	background: #f2f2f2;
-  &::before
-  {
-    visibility: visible;
-    float: left;
-    content: ' ';
-    position: absolute;
-    left: 0px;
-    right: 0;
-    top: 0;
-    bottom: auto;
-    z-index: -1;
-    height: 12px;
-    margin: 0 1%;
-    .box-shadow(0 0 12px rgba(0,0,0,0.45));
-    -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
-    -moz-border-radius-topleft: 200px 10px;
-    -moz-border-radius-topright: 200px 10px;
-    -webkit-border-top-left-radius: 200px 10px;
-    -webkit-border-top-right-radius: 200px 10px;
-    border-top-left-radius: 200px 15px;
-    border-top-right-radius: 200px 15px;
-  }
-  &::after
-  {
-    visibility: visible;
-    float: left;
-    content: ' ';
-    position: absolute;
-    top:0; right:0; bottom:0; left:0;
-    z-index: -1;    
-		background: #ccc;    
-  }
+  background: none;
 	a
 	{
 	  display: block;
@@ -538,22 +511,32 @@ table { border-collapse: collapse; border-spacing: 0; }
 		color: @color-translucentblack;
 		text-transform: uppercase;
 		line-height: 44px;
-    text-decoration: none;    
+    text-decoration: none;
     text-align: center;
     font-size: 11px;
     .transition;
     &.home
     {
-      width: 20%;
-      left: 40%;
+      top: 50%;
+      left: 50%;
+      margin: -62px 0 0 -42px;
+      height: 44px;
+      width: 44px;
+      left: 50%;
+      font-size: 36px;
+      background: rgba(255,255,255,0.85);
+      .rounded(50%);
+      padding: 20px;
+      opacity: 1;
+      &.at-home
+      {
+        opacity: 0;
+      }
     }
-    &.prev
-    {
-      left: 0;
-    }
+    &.prev,
     &.next
     {
-      right: 0;
+      display: none;
     }
     &:hover,
     &:focus
@@ -570,10 +553,19 @@ table { border-collapse: collapse; border-spacing: 0; }
   top: 0; bottom: 0; left: 0; right: 0;
   margin: 0;
   overflow: auto;
+  overflow-x: hidden;
   background:#f2f2f2;
   .box-shadow;
-  .transition;
+
+  -webkit-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+
   padding:2em;
+  padding-bottom: 140px;
+
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
 
   &:not(:target)
   {
@@ -599,6 +591,13 @@ table { border-collapse: collapse; border-spacing: 0; }
     }
   }
 
+  &.me-and-dill
+  {
+    background: url(/images/me-loading.jpg) 50% 50% no-repeat;
+    background-size: cover;
+    color: #fff;
+  }
+
   h1,h2,h3,h4
   {
 		.typo;
@@ -607,7 +606,7 @@ table { border-collapse: collapse; border-spacing: 0; }
     {
       display: block;
       clear: both;
-      margin:1em 0;
+      margin: 0.5em 0 1em 0;
     }
   }
 
@@ -649,37 +648,6 @@ table { border-collapse: collapse; border-spacing: 0; }
 	} // &.media
 }
 
-.aspect-portrait
-{
-  .page
-  {
-    &.media
-    {
-      .media-item
-      {
-        width: 100%;
-        height: auto;
-      }
-    }    
-  }
-}
-
-.aspect-landscape
-{
-  .page
-  {
-    &.media
-    {
-      .media-item
-      {
-        width: auto;
-        height: 100%;
-      }      
-    }
-  }
-}
-
-
 .links
 {
 	list-style: none;
@@ -688,9 +656,38 @@ table { border-collapse: collapse; border-spacing: 0; }
 	.typo(300%);
 }
 
+.link_hover(@color:rgba(0,0,0,0.9))
+{
+  &:hover,
+  &:focus,
+  &:visited:hover
+  {
+    .transition;
+    outline: 0;
+    opacity: 0.7;
+    text-shadow: 0 0 5px lighten(@color, 10%);
+  }
+}
+
+.link_active
+{
+  &:active
+  {
+    top: 1px;
+  }
+}
+
 .link
 {
+  position: relative;
   .transition;
+  opacity: 0.9;
+  .link_active;
+  &.tumblr
+  {
+    color: @color-tumblr;
+    .link_hover(@color-tumblr);
+  }
   &.egwrk
   {
     color: @color-egwrk;
@@ -698,18 +695,22 @@ table { border-collapse: collapse; border-spacing: 0; }
 	&.punkave
 	{
 		color: @color-punkave;
+    .link_hover(@color-punkave);
 	}
   &.frontend
   {
     color: @color-frontend;
+    .link_hover(@color-frontend);
   }
   &.code
   {
     color: @color-code;
+    .link_hover(@color-code);
   }
   &.design
   {
     color: @color-design;
+    .link_hover(@color-design);
   }
   &.forever
   {
@@ -717,20 +718,14 @@ table { border-collapse: collapse; border-spacing: 0; }
   &.friends
   {
     color: @color-friends;
+    .link_hover(@color-friends);
   }
   &.example,
-  &.collaborator  
+  &.collaborator
   {
     text-decoration: underline;
     color: @color-examples;
-  }
-  &:hover,
-  &:focus,
-  &:visited:hover
-  {
-    .transition;      
-    outline: 0;
-    color: #666;
+    .link_hover(@color-examples);
   }
 }
 
@@ -813,6 +808,7 @@ table { border-collapse: collapse; border-spacing: 0; }
 }
 
 @media only screen and (min-width: 768px) {
+
   /* Style adjustments for viewports 768px and over go here */
   .wrapper
   {
@@ -828,7 +824,7 @@ table { border-collapse: collapse; border-spacing: 0; }
   	z-index: 999;
   	background: #f2f2f2;
   	border: none;
-  	
+    opacity: 1;
   	&::before,
   	&::after
   	{
@@ -845,8 +841,35 @@ table { border-collapse: collapse; border-spacing: 0; }
       position: static;
       text-transform: lowercase;
       line-height: 1;
-      text-align: left;    
-    
+      text-align: left;
+
+      &.home
+      {
+        overflow: hidden;
+        max-width: 1000px;
+        &.at-home
+        {
+          max-width: 0;
+          display: none;
+        }
+      }
+
+      &.home,
+      &.next,
+      &.prev
+      {
+        background: none;
+        padding: 0;
+        margin: 0;
+        display: inline;
+        font-size: 12px;
+        &:hover,
+        &:focus {
+          opacity: 0.8;
+          text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+        }
+      }
+
       // THIS DOESN'T FUCKING WORK!
       // &[href="#home"]::after
       // {
@@ -865,18 +888,21 @@ table { border-collapse: collapse; border-spacing: 0; }
       // }
       &.home::after
       {
-        display: block;
-        content: " (esc)";
+        display: inline-block;
+        content: " (esc) ";
+        margin-left: 0.125em;
       }
       &.prev::after
       {
-        display:block;
-        content: " (j)";
+        display: inline-block;
+        content: " (j) ";
+        margin-left: 0.125em;
       }
       &.next::after
       {
-        display:block;
-        content: " (k)";
+        display: inline-block;
+        content: " (k) ";
+        margin-left: 0.125em;
       }
   	}
   }
@@ -902,3 +928,119 @@ table { border-collapse: collapse; border-spacing: 0; }
   p, h2, h3 { orphans: 3; widows: 3; }
   h2, h3{ page-break-after: avoid; }
 }
+
+
+
+/*  Font Awesome
+    the iconic font designed for use with Twitter Bootstrap
+    -------------------------------------------------------
+    The full suite of pictographic icons, examples, and documentation
+    can be found at: http://fortawesome.github.com/Font-Awesome/
+
+    License
+    -------------------------------------------------------
+    The Font Awesome webfont, CSS, and LESS files are licensed under CC BY 3.0:
+    http://creativecommons.org/licenses/by/3.0/ A mention of
+    'Font Awesome - http://fortawesome.github.com/Font-Awesome' in human-readable
+    source code is considered acceptable attribution (most common on the web).
+    If human readable source code is not available to the end user, a mention in
+    an 'About' or 'Credits' screen is considered acceptable (most common in desktop
+    or mobile software).
+
+    Contact
+    -------------------------------------------------------
+    Email: dave@davegandy.com
+    Twitter: http://twitter.com/fortaweso_me
+    Work: http://lemonwi.se co-founder
+
+    */
+
+@font-face {
+    font-family: 'FontAwesome';
+    src: url('/fonts/fontawesome-webfont.eot');
+    src: url('/fonts/fontawesome-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/fontawesome-webfont.woff') format('woff'),
+         url('/fonts/fontawesome-webfont.ttf') format('truetype'),
+         url('/fonts/fontawesome-webfont.svgz#FontAwesomeRegular') format('svg'),
+         url('/fonts/fontawesome-webfont.svg#FontAwesomeRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* sprites.less reset */
+[class^="icon-"],
+[class*=" icon-"] {
+    display: inline;
+    width: auto;
+    height: auto;
+    line-height: inherit;
+    vertical-align: baseline;
+    background-image: none;
+    background-position: 0% 0%;
+    background-repeat: repeat;
+}
+li[class^="icon-"],
+li[class*=" icon-"] {
+    display: block;
+}
+
+/*  Font Awesome styles
+    ------------------------------------------------------- */
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+    font-family: FontAwesome;
+    font-weight: normal;
+    font-style: normal;
+    display: inline-block;
+    text-decoration: inherit;
+}
+
+a [class^="icon-"],
+a [class*=" icon-"] {
+    display: inline-block;
+    text-decoration: inherit;
+}
+
+/* makes the font 33% larger relative to the icon container */
+.icon-large:before {
+    vertical-align: top;
+    font-size: 4/3em;
+}
+
+.btn {
+    [class^="icon-"],
+    [class*=" icon-"] {
+        /* keeps button heights with and without icons the same */
+        line-height: .9em;
+    }
+}
+
+li {
+    [class^="icon-"],
+    [class*=" icon-"] {
+        display: inline-block;
+        width: 1.25em;
+        text-align: center;
+    }
+    .icon-large[class^="icon-"],
+    .icon-large[class*=" icon-"]  {
+        /* 1.5 increased font size for icon-large * 1.25 width */
+        width: 1.5*1.25em;
+    }
+}
+
+li[class^="icon-"],
+li[class*=" icon-"] {
+    margin-left: 0;
+    list-style-type: none;
+
+    &:before {
+        text-indent: -2em;
+        text-align: center;
+    }
+    &.icon-large:before {
+        text-indent: -4/3em;
+    }
+}
+
+.icon-home:before               { content: "\f015"; }
