@@ -1,39 +1,37 @@
-<?php $environment = strstr($_SERVER['HTTP_HOST'], '.com') ? 'PROD' : 'DEV' ?>
-<!doctype html>
+<!doctype html><?php $environment = strstr($_SERVER['HTTP_HOST'], '.com') ? 'PROD' : 'DEV' ?>
 <!--[if lte IE 9]>     <html class="no-js ie" lang="en"> <![endif]-->
 <!--[if gt IE 9]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>johnny benson builds the internet in <?php echo date('Y', time()) ?></title>
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="johnny benson builds the internet in <?php echo date('Y', time()) ?>">
+    <meta name="author" content="johnny benson">
     <meta name="viewport" content="width=device-width,initial-scale=0.5">
-
     <?php if ($environment == 'PROD'): ?>
-        <link rel="stylesheet" type="text/css" href="/css/j-hnnybens-n.min.css?1">
+        <link rel="stylesheet" type="text/css" href="/css/j-hnnybens-n.min.css?<?= filemtime(__FILE__) ?>">
     <?php else: ?>
         <link rel="stylesheet/less" type="text/css" href="/css/j-hnnybens-n.less">
         <script src="/js/libs/less-1.1.3.min.js"></script>
     <?php endif ?>
-
 </head>
+
 <body class="<?= ($environment == 'PROD') ? 'johnny-fucking-benson' : 'dev' ?>">
 
     <div class="wrapper">
 
         <section id="home" class="page home">
-            <h1><a href="#front-end-web-guy" class="link frontend">johnny benson</a> is an <a href="http://www.tumblr.com" class="link tumblr" rel="external">engineer at Tumblr</a>.</h1>
+            <h1><a href="#johnny-benson" class="link frontend">johnny benson</a> is an <a href="http://www.tumblr.com" class="link tumblr" rel="external">engineer at Tumblr</a>.</h1>
             <h3 class="block"><a href="#friend-stuff" class="link friends">make friends</a> :D</h3>
         </section><!-- #home -->
 
-        <section id="front-end-web-guy" class="page media me-and-dill">
+        <section id="johnny-benson" class="page media me-and-dill">
             <h2>me and Dill getting an update.</h2>
-        </section><!-- #front-end-web -->
+        </section><!-- #johnny-benson -->
 
         <section id="friend-stuff" class="page">
             <h2><a href="http://errthng.com" rel="external">errthng.com</a>,</h2>
-            <h2><a href="http://errthng.com" rel="external">intrrnt.com</a>,</h2>
+            <h2><a href="http://intrrnt.com" rel="external">intrrnt.com</a>,</h2>
             <h2><a href="http://www.facebook.com/johnny.benson" rel="external">facebook</a>,</h2>
             <h2><a href="http://twitter.com/#!/johnnyoffline" rel="external">twitter</a>,</h2>
             <h2><a href="http://ffffound.com/home/johnnyoffline/found" rel="external">ffffound</a>,</h2>
@@ -58,8 +56,8 @@
         <a href="#next" class="next">next</a>
     </nav>
 
-    <script src="/js/libs/jquery-1.7.min.js"></script>
-    <script src="/js/j-hnnybens-n<?= ($environment == 'PROD') ? '.min.' : '.' ?>js?1"></script>
+    <script src="/js/libs/jquery-1.7.2.min.js"></script>
+    <script src="/js/j-hnnybens-n<?= ($environment == 'PROD') ? '.min.' : '.' ?>js?<?= filemtime(__FILE__) ?>"></script>
 
     <script>
     var _gaq=[['_setAccount','UA-10529229-4'],['_trackPageview']];
