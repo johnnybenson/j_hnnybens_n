@@ -1,4 +1,5 @@
-<!doctype html><?php $environment = strstr($_SERVER['HTTP_HOST'], '.com') ? 'PROD' : 'DEV' ?>
+<?php $environment = strstr($_SERVER['HTTP_HOST'], '.com') ? 'PROD' : 'DEV' ?>
+<!doctype html>
 <!--[if lte IE 9]>     <html class="no-js ie" lang="en"> <![endif]-->
 <!--[if gt IE 9]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
@@ -8,12 +9,12 @@
     <meta name="description" content="johnny benson builds the internet in <?php echo date('Y', time()) ?>">
     <meta name="author" content="johnny benson">
     <meta name="viewport" content="width=device-width,initial-scale=0.5">
-    <?php if ($environment == 'PROD'): ?>
-        <link rel="stylesheet" type="text/css" href="/css/j-hnnybens-n.min.css?<?= filemtime(__FILE__) ?>">
-    <?php else: ?>
-        <link rel="stylesheet/less" type="text/css" href="/css/j-hnnybens-n.less">
-        <script src="/js/libs/less-1.1.3.min.js"></script>
-    <?php endif ?>
+<?php if ($environment == 'PROD'): ?>
+    <link rel="stylesheet" type="text/css" href="/css/j-hnnybens-n.min.css?<?= filemtime(__FILE__) ?>">
+<?php else: ?>
+    <link rel="stylesheet/less" type="text/css" href="/css/j-hnnybens-n.less">
+    <script src="/js/libs/less-1.1.3.min.js"></script>
+<?php endif ?>
 </head>
 
 <body class="<?= ($environment == 'PROD') ? 'johnny-fucking-benson' : 'dev' ?>">
