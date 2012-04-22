@@ -105,6 +105,18 @@ var j_nnybens_n = (function() {
         $('a[rel="external"]').attr('target','_blank');
     }
 
+    // Do not click
+    function setSecretButton() {
+        var links = $('#friend-stuff a[rel="external"]');
+        $('.the-secret-button').unbind('click.secret').bind('click.secret', function(){
+            links.each(function(i){
+                var link = $(this);
+                window.open(link.attr('href'),'_newtab' + i);
+            });
+            return false;
+        });
+    }
+
     // Console Logging Utility
     function log(output) {
         if (window.console && window.console.log && debug === true) {
@@ -121,6 +133,7 @@ var j_nnybens_n = (function() {
             setHomeButton();
             setPrevButton();
             setNextButton();
+            setSecretButton();
             $(window).unbind('hashchange.j_b').bind('hashchange.j_b', function(){
                 setHomeButton();
             });

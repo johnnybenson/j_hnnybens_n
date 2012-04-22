@@ -25,9 +25,6 @@
         <section id="home" class="page home">
             <h1><a href="#front-end-web-guy" class="link frontend">johnny benson</a> is an <a href="http://www.tumblr.com" class="link tumblr" rel="external">engineer at Tumblr</a>.</h1>
             <h3 class="block"><a href="#friend-stuff" class="link friends">make friends</a> :D</h3>
-
-            <iframe class="follow_button" frameborder="0" border="0" scrolling="no" allowtransparency="true" height="25" width="171" src="http://tumblr/platform/v1/follow_button.html?button_type=1&tumblelog=errthng&color_scheme=light"></iframe>
-
         </section><!-- #home -->
 
         <section id="front-end-web-guy" class="page media me-and-dill">
@@ -50,6 +47,7 @@
             <h2><a href="http://www.linkedin.com/pub/john-benson/4/91/440" rel="external">linkedin</a>,</h2>
             <h2><a href="http://letterboxd.com/johnnybenson" rel="external">letterboxd</a>,</h2>
             <h2><a href="http://mlkshk.com/user/johnnybenson" rel="external">mlkshk</a></h2>
+            <h2><a href="#the-secret-button" class="the-secret-button">don't click</a></h2>
         </section><!-- #friend-stuff -->
 
     </div>

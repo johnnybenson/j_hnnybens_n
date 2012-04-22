@@ -615,6 +615,21 @@ table { border-collapse: collapse; border-spacing: 0; }
     text-decoration: none;
   }
 
+  a.the-secret-button
+  {
+    display: block;
+    clear: both;
+    opacity: 0;
+    color: #f2f2f2;
+    .transition;
+    cursor: pointer;
+    &:hover
+    {
+      opacity: 1;
+      text-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+  }
+
   /* Fit the images inline with the text */
   img
   {
