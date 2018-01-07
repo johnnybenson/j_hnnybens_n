@@ -1,0 +1,17 @@
+{
+  "name": "cool-site",
+  "version": "69",
+  "description": "Internet",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server"
+  },
+  "author": "johnnybenson",
+  "license": "MIT",
+  "devDependencies": {
+    "copy-webpack-plugin": "^4.3.1",
+    "file-loader": "^0.8",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.10.0"
+  }
+}

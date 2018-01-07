@@ -1,0 +1,86 @@
+*
+{
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, “Roboto”, “Droid Sans”, “Helvetica Neue”, Helvetica, Arial, sans-serif;
+}
+
+*:focus
+{
+    outline: none;
+}
+
+html
+{
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizelegibility;
+}
+
+html,
+body
+{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    font-size: 10vw;
+    overflow: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+{
+    margin: 0 0 0.125rem 0;
+    font-weight: lighter;
+    line-height: 1;
+}
+
+a:link
+{
+    text-decoration: none;
+    color: #0006;
+}
+
+a:hover,
+a:active,
+a:focus
+{
+    color: #0006;
+}
+
+.👽,
+.🍕
+{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    height: 100vh;
+    background: #fafbfc;
+}
+
+.👽::before,
+.🍕::before
+{
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%;
+    width: 100%;
+    background: url("/assets/svg/currency.svg");
+    background-size: 69px;
+    /* z-index: -1; */
+    opacity: 0.2;
+    pointer-events: none;
+}
+
+.🆒
+{
+    height: 100%;
+    overflow-y: scroll;
+}
