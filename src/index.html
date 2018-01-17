@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>JOHNNY BENSON</title>
+    <title>Johnny ☕️ Benson</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="You can browse forever with Johnny Benson, full stack engineer, product director, problem solver.">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
@@ -14,30 +14,46 @@
 </head>
 <body>
 
-    <section class="🆒">
-        <template>
-            <header class="👽">
-                <h1>
-                    <a href="/">JOHNNY</a>
-                </h1>
-            </header>
-            <footer class="🍕">
-                <h1>
-                    <a href="/">BENSON</a>
-                </h1>
-            </footer>
-        </template>
+    <div class="video">
+        <video autoplay></video>
+    </div>
+
+    <audio>
+        <source src="/assets/audio/ohno.mp3"></source>
+    </audio>
+
+    <section class="🆒"></section>
+
+    <template>
         <header class="👽">
             <h1>
-                <a href="/">JOHNNY</a>
+                <address>
+                    <svg class="icon" viewBox="0 0 8 8">
+                        <use xlink:href="/assets/svg/open-iconic.svg#envelope-closed"></use>
+                    </svg> johnnybenson＠gmail.com
+                </address>
             </h1>
         </header>
-        <footer class="🍕">
-            <h1>
-                <a href="/">BENSON</a>
-            </h1>
-        </footer>
-    </section>
+    </template>
+
+    <select multiple="multiple" size="10">
+        <option disabled>work</option>
+        <option>splash&nbsp;&nbsp;2017-now&nbsp;&nbsp;Senior Full Stack Engineer</option>
+        <option>handy&nbsp;&nbsp;&nbsp;2016-2017 Senior Full Stack Engineer</option>
+        <option>tumblr&nbsp;&nbsp;2012-2016 Product Manager, Staff Eng, Lead Eng, Product Eng</option>
+        <option>punkave&nbsp;2007-2012 Product Engineer</option>
+        <option>egwrk&nbsp;&nbsp;&nbsp;2006-2010 Co-founder</option>
+        <option>psyop&nbsp;&nbsp;&nbsp;2004&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creative Intern</option>
+    </select>
+
+    <template data-template-skill>
+        <header class="👽">
+            <h3>
+                <span class="skill-icon"></span>
+                <span class="skill-name"></span>
+            </h3>
+        </header>
+    </template>
 
     <script src="main.js"></script>
 

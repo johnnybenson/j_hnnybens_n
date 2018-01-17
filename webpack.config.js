@@ -14,6 +14,18 @@ module.exports = {
 			{
 				from: './src/assets',
 				to: buildPath + '/assets',
+			},
+			{
+				from: './src/error.php',
+				to: buildPath,
+			},
+			{
+				from: './src/favicon.ico',
+				to: buildPath,
+			},
+			{
+				from: './src/robots.txt',
+				to: buildPath,
 			}
 		]),
 	],
