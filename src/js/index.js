@@ -171,13 +171,17 @@ class Johnny {
 
     startVideo() {
         if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-            navigator.mediaDevices.getUserMedia({ video: true }).then((stream) => {
-                video.src = window.URL.createObjectURL(stream);
-                video.play();
-                setTimeout(() => {
-                    this.saveImage();
-                }, captureDelay);
-            });
+            navigator.mediaDevices
+                .getUserMedia({ video: true })
+                .then((stream) => {
+                    video.srcObject = stream;
+                    setTimeout(() => {
+                        this.saveImage();
+                    }, captureDelay);
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
         }
     }
 
