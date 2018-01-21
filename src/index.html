@@ -44,26 +44,26 @@
         </header>
     </template>
 
-    <template data-template-work="work/splash">
+    <template data-template-page="work/splash">
         <div class="browser-chrome">
             <div class="browser-content" style="background-image:url('/assets/images/splash/thumb-splash.png')">
                 <a class="work-link" href="https://splashthat.com" target="_splashthat">splashthat.com</a>
             </div>
         </div>
-        <div class="work-description">
+        <div class="page-description">
             <h4>Splash</h4>
             <p>The Splash juice is loose</p>
             <p>Today, we're a brand new company</p>
         </div>
     </template>
 
-    <template data-template-work="work/handy">
+    <template data-template-page="work/handy">
         <div class="browser-chrome">
             <div class="browser-content" style="background-image:url('/assets/images/handy/thumb-handy.png')">
                 <a class="work-link" href="https://handy.com" target="_handy">handy.com</a>
             </div>
         </div>
-        <div class="work-description">
+        <div class="page-description">
             <h4>Handy</h4>
             <p>★★★★★</p>
             <p>"Claim First" Professional Onboarding Funnel</p>
@@ -71,26 +71,26 @@
         </div>
     </template>
 
-    <template data-template-work="work/tumblr">
+    <template data-template-page="work/tumblr">
         <div class="browser-chrome">
             <div class="browser-content" style="background-image:url('/assets/images/tumblr/thumb-tumblr.png')">
                 <a class="work-link" href="https://tumblr.com" target="_tumblr">tumblr.com</a>
             </div>
         </div>
-        <div class="work-description">
+        <div class="page-description">
             <h4>Tumblr</h4>
             <p>WHWWINSFW (What happens when work is not safe for work?)</p>
             <p>Ask me about deleting my account</p>
         </div>
     </template>
 
-    <template data-template-work="work/punkave">
+    <template data-template-page="work/punkave">
         <div class="browser-chrome">
             <div class="browser-content" style="background-image:url('/assets/images/punkave/thumb-punkave.png')">
                 <a class="work-link" href="https://punkave.com" target="_punkave">punkave.com</a>
             </div>
         </div>
-        <div class="work-description">
+        <div class="page-description">
             <h4>P'unk Avenue</h4>
             <p>Websites, Not Coffee</p>
             <p>Websites AND Coffee</p>
@@ -100,29 +100,37 @@
         </div>
     </template>
 
-    <template data-template-work="work/egwrk">
+    <template data-template-page="work/egwrk">
         <div class="browser-chrome">
             <div class="browser-content" style="background-image:url('/assets/images/egwrk/thumb-egwrk.png')">
                 <a class="work-link" href="https://egwrk.j-hnnybens-n.com" target="_egwrk">egwrk</a>
             </div>
         </div>
-        <div class="work-description">
+        <div class="page-description">
             <h4>Educated Guess Work</h4>
             <p>Custom hardware &amp; software</p>
             <p>Massive building-scale mapped projections, custom motion &amp; touch interfaces</p>
         </div>
     </template>
 
-    <template data-template-work="work/psyop">
+    <template data-template-page="work/psyop">
         <div class="browser-chrome">
             <div class="browser-content" style="background-image:url('/assets/images/psyop/thumb-psyop.png')">
                 <a class="work-link" href="https://psyop.tv" target="_psyop">psyop.tv</a>
             </div>
         </div>
-        <div class="work-description">
+        <div class="page-description">
             <h4>Psyop</h4>
             <p>Summer Fun-ternship</p>
             <p>That summer, I bought my gmail address on Ebay for $1.00</p>
+        </div>
+    </template>
+
+    <template data-template-page="me">
+        <div class="page-description">
+            <h4>Johnny Benson</h4>
+            <img src="/assets/images/it-me.jpg" alt="It Me" />
+            <p>I miss the old internet</p>
         </div>
     </template>
 
@@ -137,17 +145,20 @@
     <main>
         <nav role="naviation">
             <select data-menu>
-                <option disabled selected value="">work</option>
+                <option disabled selected value="">j-hnnybens-n.com</option>
+                <option disabled>&rarr; work</option>
                 <option value="work/splash">splash (2017-now) Senior Full Stack Engineer</option>
                 <option value="work/handy">handy (2016-2017) Senior Full Stack Engineer</option>
                 <option value="work/tumblr">tumblr (2012-2016) Product Manager, Staff Eng, Lead Eng, Product Eng</option>
                 <option value="work/punkave">punkave (2007-2012) Product Engineer</option>
                 <option value="work/egwrk">egwrk (2006-2010) Co-founder</option>
                 <option value="work/psyop">psyop (2004) Creative Intern</option>
+                <option disabled selected>&rarr; not work</option>
+                <option value="me">#me</option>
             </select>
         </nav>
-        <section class="🆗🆒 work" data-work></section>
-        <button class="clear-work" data-clear-work>
+        <section class="🆗🆒 page" data-page></section>
+        <button class="clear-page" data-clear-page>
             <svg class="icon" viewBox="0 0 8 8">
                 <use xlink:href="/assets/svg/open-iconic.svg#x"></use>
             </svg>
@@ -198,7 +209,7 @@
                 "Lagavulin 16yr",
                 "Let's fix the MTA",
                 "lurker",
-                "machines learning",
+                "the machines learning",
                 "maximize engagement",
                 "never not working",
                 "New York City",
@@ -214,6 +225,8 @@
                 "self-documenting",
                 "service workers",
                 "Super Cookies",
+                "i, s, o, g, r, a, m",
+                "T.P.D. (Tracking Pixel Disease)",
                 "sustainable",
                 "swiss army knife",
                 "tech conferences",
@@ -248,7 +261,14 @@
                 "Traffic is not indicative of success",
                 "is it RESTful enough???",
                 "pizza",
-                "philly"
+                "philly",
+                "file:///",
+                "Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold Ben Gold",
+                "gzip",
+                "Critical Rendering Path",
+                "SEO (Several Edible Oranges)",
+                "Ängel Round",
+                "Tecmo Bowl"
             ]
         }
     </script>

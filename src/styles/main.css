@@ -137,18 +137,18 @@ video,
     fill: #000;
 }
 
-.work
+.page
 {
     position: absolute;
     top: 0; left: 0; right: 0;
 }
 
-.work:empty
+.page:empty
 {
     pointer-events: none;
 }
 
-.work > div
+.page > div
 {
     min-width: 354px;
     width: 40vw;
@@ -156,13 +156,13 @@ video,
     margin: 2vh auto;
 }
 
-.work .browser-chrome
+.page .browser-chrome
 {
     height: calc(40vw * 0.75);
     min-height: calc(354px * 0.75);
 }
 
-.work .browser-content
+.page .browser-content
 {
     background-size: cover;
     background-position: 50% 50%;
@@ -171,9 +171,63 @@ video,
     align-items: center;
 }
 
-.work:not(:empty) + .clear-work
+.page:not(:empty) + .clear-page
 {
     display: block;
+}
+
+.page-description
+{
+    background: #fff;
+    color: #000;
+    padding: 2rem;
+}
+
+.page-description img
+{
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 2rem 0;
+    border-radius: 50%;
+}
+
+.clear-page
+{
+    display: none;
+    position: fixed;
+    z-index: 999;
+    background: #000;
+    right: 2vh; bottom: 2vh;
+    color: #fff;
+    border-radius: 50%;
+    width: 8vh; height: 8vh;
+    border: none;
+    cursor: not-allowed;
+    text-align: center;
+    font-size: 0;
+}
+
+.clear-page:active
+{
+    background: #fff;
+}
+
+.clear-page:active > svg
+{
+    fill: #000;
+}
+
+.clear-page > svg
+{
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    display: inline-block;
+    margin: auto;
+    fill: #fff;
+    height: 2vh;
+    pointer-events: none;
 }
 
 .work-link
@@ -196,61 +250,16 @@ video,
     background: #fff;
 }
 
-.work-description
-{
-    background: #fff;
-    color: #000;
-    padding: 2rem;
-}
-
-.clear-work
-{
-    display: none;
-    position: fixed;
-    z-index: 999;
-    background: #000;
-    right: 2vh; bottom: 2vh;
-    color: #fff;
-    border-radius: 50%;
-    width: 8vh; height: 8vh;
-    border: none;
-    cursor: not-allowed;
-    text-align: center;
-    font-size: 0;
-}
-
-.clear-work:active
-{
-    background: #fff;
-}
-
-.clear-work:active > svg
-{
-    fill: #000;
-}
-
-.clear-work > svg
-{
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    display: inline-block;
-    margin: auto;
-    fill: #fff;
-    height: 2vh;
-    pointer-events: none;
-}
-
 select
 {
+    display: block;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 666;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    z-index: 666;
-    opacity: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
 }
 
 video

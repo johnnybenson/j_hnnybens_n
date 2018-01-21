@@ -14,8 +14,8 @@ const body = document.querySelector('body');
 const scroller = document.querySelector('[data-scroller]');
 const templates = document.querySelectorAll('[data-template-email], [data-template-credit]');
 const menu = document.querySelector('[data-menu]');
-const work = document.querySelector('[data-work]');
-const closeWork = document.querySelector('[data-clear-work]');
+const page = document.querySelector('[data-page]');
+const closepage = document.querySelector('[data-clear-page]');
 const distance = document.querySelector('[data-input-distance]');
 const datetime = document.querySelector('[data-input-datetime]');
 const media = document.querySelector('[data-media]');
@@ -45,16 +45,16 @@ class Johnny {
             menu.addEventListener(type, (event) => { this.playBlip(event); });
         });
         ['click', 'touchend'].forEach((type) => {
-            closeWork.addEventListener(type, (event) => { this.unloadWork(event); });
+            closepage.addEventListener(type, (event) => { this.unloadPage(event); });
         });
         menu.addEventListener('change', (event) => {
             window.location.hash = event.target.value;
         });
         window.addEventListener('hashchange', (event) => {
-            this.loadWork();
+            this.loadPage();
         });
         window.addEventListener('load', (event) => {
-            this.loadWork();
+            this.loadPage();
             this.startVideo();
         });
     }
@@ -257,19 +257,19 @@ class Johnny {
         window.location.hash = val;
     }
 
-    loadWork() {
-        const templateEl = document.querySelector('[data-template-work="' + this.getHash() + '"]');
+    loadPage() {
+        const templateEl = document.querySelector('[data-template-page="' + this.getHash() + '"]');
         if (templateEl) {
-            work.appendChild(this.importTemplate(templateEl));
+            page.appendChild(this.importTemplate(templateEl));
         }
     }
 
-    unloadWork(event) {
-        while (work.lastChild) {
-            work.removeChild(work.lastChild);
+    unloadPage(event) {
+        while (page.lastChild) {
+            page.removeChild(page.lastChild);
         }
         this.setHash();
-        menu.value = "";
+        menu.selectedIndex = 0;
     }
 }
 
