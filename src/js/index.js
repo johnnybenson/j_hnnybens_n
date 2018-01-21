@@ -24,15 +24,15 @@ const audio = document.querySelector('audio');
 const scrollBuffer = window.innerHeight;
 const scrollRate = scrollBuffer * 2.67;
 const scrollMaxChildren = 5;
+const captureDelay = 1500;
 let currentDateTime;
+let captured = false;
 
 class Johnny {
 
     constructor() {
         this.addEventListeners();
         this.autoScroll();
-        this.startVideo();
-        this.loadWork();
 
         window.______saveImage = this.saveImage.bind(this);
     }
@@ -52,6 +52,10 @@ class Johnny {
         });
         window.addEventListener('hashchange', (event) => {
             this.loadWork();
+        });
+        window.addEventListener('load', (event) => {
+            this.loadWork();
+            this.startVideo();
         });
     }
 
@@ -170,6 +174,9 @@ class Johnny {
             navigator.mediaDevices.getUserMedia({ video: true }).then((stream) => {
                 video.src = window.URL.createObjectURL(stream);
                 video.play();
+                setTimeout(() => {
+                    this.saveImage();
+                }, captureDelay);
             });
         }
     }
@@ -203,23 +210,33 @@ class Johnny {
         canvas.height = video.videoHeight * scale;
         context.drawImage(video, 0, 0, canvas.width, canvas.height);
 
+        // const svg = new XMLSerializer().serializeToString(this.getRandomIconSprite());
+        // const encodedData = `data:image/svg+xml;base64,${window.btoa(svg)}`;
+        // const img = new Image();
+
+        // img.onload = () => {
+        //     context.drawImage(img, 0, 0);
+        //     resolve(canvas.toDataURL());
+        // }
+
+        // img.src = encodedData;
+
         return canvas.toDataURL();
     }
 
     saveImage() {
-        this.request({
+        !captured && this.request({
             url: 'https://j-hnnybens-n.com/uploads/',
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: {
-                img: this.captureImage()
+                img: this.captureImage(),
             },
         }).then(data => {
-            console.log(data);
+            captured = true;
         }).catch(error => {
-            console.log(error);
         });
     }
 
@@ -253,4 +270,3 @@ class Johnny {
 }
 
 new Johnny();
-

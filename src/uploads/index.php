@@ -19,9 +19,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $file = "{$imgPath}{$imgName}";
     $success = file_put_contents($file, $imgData);
 
+    $publicUrl = "https://$host/uploads/images/{$imgName}";
+
     echo $success
-        ? "https://$host/uploads/images/{$imgName}"
-        : "Unable to save image. FILE={$file}";
+        ? "{ 'image': '$publicUrl'}"
+        : "Unable to save image. FILE={$publicUrl}";
 
     exit;
 }
