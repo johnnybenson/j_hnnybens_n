@@ -41,52 +41,53 @@ switch(getenv("REDIRECT_STATUS"))
   break;
 }
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>ERROR 💀 <?php print ($error_code); ?></title>
-    <?php if ($redirect_to != ""): ?>
+    <title>ERROR 💀 <?php print($error_code); ?></title>
+    <?php if ($redirect_to != "") : ?>
       <meta http-equiv="Refresh" content="5; url='<?php print($redirect_to); ?>'">
     <?php endif ?>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="You can browse forever with Johnny Benson, full stack engineer, product director, problem solver.">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="Browse forever with Johnny Benson, full stack engineer, product person, problem solver.">
+    <link rel="stylesheet" type="text/css" media="screen" href="/main.css" />
     <meta name="apple-mobile-web-app-title" content="👽">
     <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+    <link rel="prefetch" href="/assets/svg/open-iconic.svg">
     <script>(function (i, s, o, g, r, a, m) { i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o), m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m) })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga'); ga('create', 'UA-10529229-4', 'auto'); ga('send', 'pageview');</script>
 </head>
 <body>
 
-    <section class="🆒">
-        <template>
-            <header class="👽">
-                <h1>
-                    <a href="/">ERROR</a>
-                </h1>
-            </header>
-            <footer class="🍕">
-                <h1>
-                    <a href="/"><?php print ($error_code); ?></a>
-                </h1>
-            </footer>
-        </template>
+    <section class="🆗🆒 credits" data-scroller>
+        <header class="👽">
+            <h1>
+                <a href="/"><?= ($error_code); ?></a>
+            </h1>
+        </header>
         <header class="👽">
             <h1>
                 <a href="/">ERROR</a>
             </h1>
         </header>
-        <footer class="🍕">
-            <h1>
-                <a href="/"><?php print ($error_code); ?></a>
-            </h1>
-        </footer>
     </section>
 
-    <script src="main.js"></script>
+    <template data-template-email>
+        <header class="👽">
+            <h1>
+                <a href="/"><?= ($error_code); ?></a>
+            </h1>
+        </header>
+        <header class="👽">
+            <h1>
+                <a href="/">ERROR</a>
+            </h1>
+        </header>
+    </template>
+
+    <script src="/main.js"></script>
 
 </body>
 </html>

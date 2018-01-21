@@ -5,8 +5,8 @@ const styles = require('file-loader?name=[name].[ext]!../styles/main.css');
 
 const bootstrap = (function(){
     const bootstrapEl = document.querySelector('[data-bootstrap]');
-    const bootstrapData = Object.freeze(JSON.parse(bootstrapEl.innerHTML));
-    bootstrapEl.remove();
+    const bootstrapData = Object.freeze(JSON.parse(((bootstrapEl && bootstrapEl.innerHTML) || '{ "icons": [], "credits": []}')));
+    bootstrapEl && bootstrapEl.remove();
     return bootstrapData;
 }())
 
