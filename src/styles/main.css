@@ -1,15 +1,21 @@
-/* Define the "system" font family */
 @font-face {
   font-family: system;
   font-style: normal;
   font-weight: 300;
-  src: local(".SFNSText-Light"), local(".HelveticaNeueDeskInterface-Light"), local(".LucidaGrandeUI"), local("Ubuntu Light"), local("Segoe UI Light"), local("Roboto-Light"), local("DroidSans"), local("Tahoma");
+  src: local(".SFNSText-Light"),
+       local(".HelveticaNeueDeskInterface-Light"),
+       local(".LucidaGrandeUI"),
+       local("Ubuntu Light"),
+       local("Segoe UI Light"),
+       local("Roboto-Light"),
+       local("DroidSans"),
+       local("Tahoma");
 }
 
 *
 {
     box-sizing: border-box;
-    font-family: "system";
+    font-family: "system",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
     cursor: context-menu;
 }
 
@@ -24,9 +30,6 @@ html
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizelegibility;
     user-select: none;
-    background: url("/assets/images/underlay-lo.jpg") 50% 50%;
-    background-attachment: fixed;
-    background-size: cover;
 }
 
 html,
@@ -36,10 +39,9 @@ body
     padding: 0;
     height: 100vh;
     width: 100vw;
-    font-size: 8vw;
+    font-size: 85%;
     overflow: hidden;
     color: #fff9;
-    /* min-width: 100%; */
 }
 
 h1,
@@ -47,24 +49,56 @@ h2,
 h3,
 h4,
 h5,
-h6
+h6,
+p
 {
-    margin: 0 0 0.125rem 0;
+    font-size: 100%;
+    margin: 0 0 0.5rem 0;
     font-weight: 700;
     line-height: 1;
+}
+
+h1
+{
+    font-size: 10vw;
+}
+
+h2,
+h3
+{
+    font-size: 8vw;
+}
+
+h4
+{
+    font-size: 4vw;
 }
 
 a:link
 {
     text-decoration: none;
-    color: #0006;
 }
 
 a:hover,
 a:active,
 a:focus
 {
-    color: #0006;
+
+}
+
+html,
+body,
+nav,
+select,
+video,
+.media,
+.media::before,
+.media::after
+{
+    position: fixed;
+    top: 0; right: 0; bottom: 0; left: 0;
+    height: 100%;
+    width: 100%;
 }
 
 .👽
@@ -75,6 +109,7 @@ a:focus
     justify-content: center;
     text-align: center;
     height: 100vh;
+    padding: 2rem;
 }
 
 .👽::before
@@ -88,7 +123,7 @@ a:focus
     pointer-events: none;
 }
 
-.🆒
+.🆗🆒
 {
     height: 100%;
     overflow-y: scroll;
@@ -97,9 +132,113 @@ a:focus
 .icon
 {
     display: inline-block;
-    width: 5vw;
-    height: 5vw;
+    width: 12vmin;
+    height: 12vmin;
     fill: #000;
+}
+
+.work
+{
+    position: absolute;
+    top: 0; left: 0; right: 0;
+}
+
+.work:empty
+{
+    pointer-events: none;
+}
+
+.work > div
+{
+    min-width: 354px;
+    width: 40vw;
+    box-shadow: 1px 1px 0 0 #000, 2px 2px 0 0 #000, 3px 3px 0 0 #000, 4px 4px 0 0 #000, 5px 5px 0 0 #000, 6px 6px 0 0 #000;
+    margin: 2vh auto;
+}
+
+.work .browser-chrome
+{
+    height: calc(40vw * 0.75);
+    min-height: calc(354px * 0.75);
+}
+
+.work .browser-content
+{
+    background-size: cover;
+    background-position: 50% 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.work:not(:empty) + .clear-work
+{
+    display: block;
+}
+
+.work-link
+{
+    display: inline-block;
+    font-size: 1rem;
+    line-height: 1;
+    padding: 1rem;
+    color: #fff;
+    background: #000;
+    font-weight: bold;
+    font-style: italic;
+    cursor: pointer;
+}
+
+.work-link:active,
+.work-link:focus
+{
+    color: #000;
+    background: #fff;
+}
+
+.work-description
+{
+    background: #fff;
+    color: #000;
+    padding: 2rem;
+}
+
+.clear-work
+{
+    display: none;
+    position: fixed;
+    z-index: 999;
+    background: #000;
+    right: 2vh; bottom: 2vh;
+    color: #fff;
+    border-radius: 50%;
+    width: 8vh; height: 8vh;
+    border: none;
+    cursor: not-allowed;
+    text-align: center;
+    font-size: 0;
+}
+
+.clear-work:active
+{
+    background: #fff;
+}
+
+.clear-work:active > svg
+{
+    fill: #000;
+}
+
+.clear-work > svg
+{
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    display: inline-block;
+    margin: auto;
+    fill: #fff;
+    height: 2vh;
+    pointer-events: none;
 }
 
 select
@@ -114,21 +253,46 @@ select
     display: block;
 }
 
-select,
-video,
-.media,
-.media::before,
-.media::after
-{
-    position: fixed;
-    top: 0; right: 0; bottom: 0; left: 0;
-    height: 100%;
-    width: 100%;
-}
-
 video
 {
   object-fit: cover;
+}
+
+audio
+{
+    opacity: 0;
+}
+
+.input-distance,
+.input-datetime
+{
+    text-align: center;
+    -webkit-apperance: none;
+    background: none;
+    border: none;
+    color: #fff;
+    z-index: 2;
+    width: 100%;
+}
+
+.input-distance
+{
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.input-datetime
+{
+    position: fixed;
+    top: 0; left: 0;
+}
+
+.media
+{
+    background: url("/assets/images/underlay-lo.jpg") 50% 50%;
+    background-attachment: fixed;
+    background-size: cover;
 }
 
 .media::before
@@ -146,4 +310,28 @@ video
     background: url("/assets/images/overlay.png") 50% 50%;
     background-attachment: fixed;
     background-size: cover;
+}
+
+.browser-chrome
+{
+    position: relative;
+    border-top: 2rem solid rgba(230, 230, 230, 0.7);
+}
+
+.browser-chrome:before
+{
+    display: block;
+    position: absolute;
+    content: '';
+    top: -1.25rem; left: 1rem;
+    width: 0.5rem; height: 0.5rem;
+    border-radius: 50%;
+    background-color: #f44;
+    box-shadow: 0 0 0 2px #f44, 1.5rem 0 0 2px #9b3, 3rem 0 0 2px #fb5;
+}
+
+.browser-content
+{
+    min-height: 100%;
+    min-width: 100%;
 }

@@ -3,30 +3,69 @@ import easyScroll from 'easy-scroll';
 const site = require('file-loader?name=[name].[ext]!../index.html');
 const styles = require('file-loader?name=[name].[ext]!../styles/main.css');
 
+const bootstrap = (function(){
+    const bootstrapEl = document.querySelector('[data-bootstrap]');
+    const bootstrapData = Object.freeze(JSON.parse(bootstrapEl.innerHTML));
+    bootstrapEl.remove();
+    return bootstrapData;
+}())
+
 const body = document.querySelector('body');
-const wrapper = document.querySelector('.🆒');
-const templates = document.querySelectorAll('template');
-const bottomScrollReveal = window.innerHeight;
-const scrollRate = bottomScrollReveal * 2.67;
-const audio = document.querySelector('audio');
-const select = document.querySelector('select');
+const scroller = document.querySelector('[data-scroller]');
+const templates = document.querySelectorAll('[data-template-email], [data-template-credit]');
+const menu = document.querySelector('[data-menu]');
+const work = document.querySelector('[data-work]');
+const closeWork = document.querySelector('[data-clear-work]');
+const distance = document.querySelector('[data-input-distance]');
+const datetime = document.querySelector('[data-input-datetime]');
+const media = document.querySelector('[data-media]');
 const video = document.querySelector('video');
-const icons = window.______icons;
-const skills = window.______skills;
+const audio = document.querySelector('audio');
+const scrollBuffer = window.innerHeight;
+const scrollRate = scrollBuffer * 2.67;
+const scrollMaxChildren = 5;
+let currentDateTime;
 
 class Johnny {
 
-
     constructor() {
         this.addEventListeners();
-        this.appendContent();
         this.autoScroll();
         this.startVideo();
+        this.loadWork();
+
+        window.______saveImage = this.saveImage.bind(this);
     }
 
-    parseSVG(s) {
+    addEventListeners() {
+        scroller.addEventListener('DOMMouseScroll', this.preventDefault);
+        scroller.addEventListener('mousewheel', this.preventDefault);
+        scroller.addEventListener('touchmove', this.preventDefault);
+        ['change', 'touchend'].forEach((type) => {
+            menu.addEventListener(type, (event) => { this.playBlip(event); });
+        });
+        ['click', 'touchend'].forEach((type) => {
+            closeWork.addEventListener(type, (event) => { this.unloadWork(event); });
+        });
+        menu.addEventListener('change', (event) => {
+            window.location.hash = event.target.value;
+        });
+        window.addEventListener('hashchange', (event) => {
+            this.loadWork();
+        });
+    }
+
+    preventDefault(event) {
+        event.preventDefault();
+    }
+
+    importTemplate(templateEl) {
+        return document.importNode(templateEl.cloneNode(true).content, true);
+    }
+
+    parseSVG(svgString) {
         const div = document.createElementNS('http://www.w3.org/1999/xhtml', 'div');
-        div.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg">' + s + '</svg>';
+        div.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg">' + svgString + '</svg>';
         const frag = document.createDocumentFragment();
         while (div.firstChild.firstChild) {
             frag.appendChild(div.firstChild.firstChild);
@@ -50,37 +89,80 @@ class Johnny {
         return arr[this.getRandomInt(arr.length)];
     }
 
+    getRandomIcon()
+    {
+        return this.getRandom(bootstrap.icons);
+    }
+
+    getRandomCredit()
+    {
+        return this.getRandom(bootstrap.credits);
+    }
+
+    getRandomIconSprite()
+    {
+        return this.buildSvgIconSprite(this.getRandomIcon());
+    }
+
     shouldAppendContent() {
-        return wrapper.clientHeight > (wrapper.scrollHeight - wrapper.scrollTop - bottomScrollReveal);
+        return scroller.clientHeight > (scroller.scrollHeight - scroller.scrollTop - scrollBuffer);
+    }
+
+    shouldUnloadContent() {
+        return scroller.children.length > scrollMaxChildren;
     }
 
     appendContent() {
-        const template = this.getRandom(templates).cloneNode(true);
-        const skill = (template.dataset.templateSkill === '') ? this.getRandom(skills) : false;
-        const icon = (template.dataset.templateSkill === '') ? this.getRandom(icons) : false;
-        const card = document.importNode(template.content, true);
+        const card = this.importTemplate(this.getRandom(templates));
+        const icon = card.querySelector('.credit-icon');
+        const name = card.querySelector('.credit-name');
 
-        if (skill) {
-            card.querySelector('.skill-icon').appendChild(this.buildSvgIconSprite(icon));
-            card.querySelector('.skill-name').textContent = skill;
+        icon && icon.appendChild(this.getRandomIconSprite());
+        name && (name.textContent = this.getRandomCredit());
+
+        scroller.appendChild(card);
+    }
+
+    unloadContent() {
+        while (scroller.firstChild) {
+            if (scroller.children.length == 2) {
+                break;
+            }
+            scroller.removeChild(scroller.firstChild);
         }
-
-        wrapper.appendChild(card);
     }
 
     autoScroll() {
         if (this.shouldAppendContent()) {
             this.appendContent();
         }
+        if (this.shouldUnloadContent()) {
+            this.unloadContent();
+        }
         easyScroll({
-            'scrollableDomEle': wrapper,
+            'scrollableDomEle': scroller,
             'direction': 'bottom',
             'duration': scrollRate,
             'easingPreset': 'linear',
+            'onRefUpdateCallback': (distance) => {
+                this.setDistance(distance);
+                this.setDateTime(new Date());
+            },
             'onAnimationCompleteCallback': () => {
                 this.autoScroll();
             },
         });
+    }
+
+    setDistance(val) {
+        distance.value = val;
+    }
+
+    setDateTime(val) {
+        if (val !== currentDateTime) {
+            datetime.value = val;
+            currentDateTime = val;
+        }
     }
 
     startVideo() {
@@ -116,20 +198,20 @@ class Johnny {
     captureImage() {
         const scale = 1;
         const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
         canvas.width = video.videoWidth * scale;
         canvas.height = video.videoHeight * scale;
-        canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-        const img = document.createElement('img');
         return canvas.toDataURL();
     }
 
     saveImage() {
         this.request({
-            url: "/uploads/",
-            method: "POST",
+            url: 'https://j-hnnybens-n.com/uploads/',
+            method: 'POST',
             headers: {
-                "Content-Type": "application/json",
+                'Content-Type': 'application/json',
             },
             body: {
                 img: this.captureImage()
@@ -141,19 +223,32 @@ class Johnny {
         });
     }
 
-    preventDefault(event) {
-        event.preventDefault();
+    playBlip(event) {
+        audio.volume = 1;
+        audio.play();
     }
 
-    addEventListeners() {
-        wrapper.addEventListener('DOMMouseScroll', this.preventDefault);
-        wrapper.addEventListener('mousewheel', this.preventDefault);
-        wrapper.addEventListener('touchmove', this.preventDefault);
-        ['change','touchend'].forEach(function(type) {
-            select.addEventListener(type, function () { audio.volume = 1; audio.play(); });
-        })
+    getHash() {
+        return window.location.hash.substr(1);
+    }
 
-        window.______saveImage = this.saveImage.bind(this);
+    setHash(val = '') {
+        window.location.hash = val;
+    }
+
+    loadWork() {
+        const templateEl = document.querySelector('[data-template-work="' + this.getHash() + '"]');
+        if (templateEl) {
+            work.appendChild(this.importTemplate(templateEl));
+        }
+    }
+
+    unloadWork(event) {
+        while (work.lastChild) {
+            work.removeChild(work.lastChild);
+        }
+        this.setHash();
+        menu.value = "";
     }
 }
 

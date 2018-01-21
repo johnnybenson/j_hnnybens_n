@@ -6,7 +6,7 @@
     <title>Johnny ☕️ Benson</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <meta name="description" content="Browse forever with Johnny Benson, full stack engineer, product person, problem solver.">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/main.css" />
     <meta name="apple-mobile-web-app-title" content="👽">
     <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
@@ -15,127 +15,241 @@
 </head>
 <body>
 
-    <div class="media">
+    <div class="media" data-media>
         <video autoplay></video>
+        <input class="input-distance" type="number" value="0" data-input-distance>
+        <input class="input-datetime" type="datetime" data-input-datetime>
         <audio>
             <source src="/assets/audio/noise.mp3" preload="auto"></source>
         </audio>
     </div>
 
-    <section class="🆒"></section>
-
-    <template>
+    <template data-template-email>
         <header class="👽">
-            <h1>
+            <h2>
                 <svg class="icon" viewBox="0 0 8 8">
                     <use xlink:href="/assets/svg/open-iconic.svg#envelope-closed"></use>
                 </svg>
                 <address> johnnybenson＠gmail.com </address>
-            </h1>
+            </h2>
         </header>
     </template>
 
-    <template data-template-skill>
+    <template data-template-credit>
         <header class="👽">
             <h3>
-                <div class="skill-icon"></div>
-                <div class="skill-name"></div>
+                <div class="credit-icon"></div>
+                <div class="credit-name"></div>
             </h3>
         </header>
     </template>
 
-    <select>
-        <option disabled>work</option>
-        <option value="">splash&nbsp;&nbsp;2017-now&nbsp;&nbsp;Senior Full Stack Engineer</option>
-        <option value="">handy&nbsp;&nbsp;&nbsp;2016-2017 Senior Full Stack Engineer</option>
-        <option value="">tumblr&nbsp;&nbsp;2012-2016 Product Manager, Staff Eng, Lead Eng, Product Eng</option>
-        <option value="">punkave&nbsp;2007-2012 Product Engineer</option>
-        <option value="">egwrk&nbsp;&nbsp;&nbsp;2006-2010 Co-founder</option>
-        <option value="">psyop&nbsp;&nbsp;&nbsp;2004&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creative Intern</option>
-    </select>
+    <template data-template-work="work/splash">
+        <div class="browser-chrome">
+            <div class="browser-content" style="background-image:url('/assets/images/splash/thumb-splash.png')">
+                <a class="work-link" href="https://splashthat.com" target="_splashthat">splashthat.com</a>
+            </div>
+        </div>
+        <div class="work-description">
+            <h4>Splash</h4>
+            <p>The Splash juice is loose</p>
+        </div>
+    </template>
 
-    <script>
-        window.______icons = ['account-login', 'account-logout', 'action-redo', 'action-undo', 'align-center', 'align-left', 'align-right', 'aperture', 'arrow-bottom', 'arrow-circle-bottom', 'arrow-circle-left', 'arrow-circle-right', 'arrow-circle-top', 'arrow-left', 'arrow-right', 'arrow-thick-bottom', 'arrow-thick-left', 'arrow-thick-right', 'arrow-thick-top', 'arrow-top', 'audio-spectrum', 'audio', 'badge', 'ban', 'bar-chart', 'basket', 'battery-empty', 'battery-full', 'beaker', 'bell', 'bluetooth', 'bold', 'bolt', 'book', 'bookmark', 'box', 'briefcase', 'british-pound', 'browser', 'brush', 'bug', 'bullhorn', 'calculator', 'calendar', 'camera-slr', 'caret-bottom', 'caret-left', 'caret-right', 'caret-top', 'cart', 'chat', 'check', 'chevron-bottom', 'chevron-left', 'chevron-right', 'chevron-top', 'circle-check', 'circle-x', 'clipboard', 'clock', 'cloud-download', 'cloud-upload', 'cloud', 'cloudy', 'code', 'cog', 'collapse-down', 'collapse-left', 'collapse-right', 'collapse-up', 'command', 'comment-square', 'compass', 'contrast', 'copywriting', 'credit-card', 'crop', 'dashboard', 'data-transfer-download', 'data-transfer-upload', 'delete', 'dial', 'document', 'dollar', 'double-quote-sans-left"', 'double-quote-sans-right"', 'double-quote-serif-left"', 'double-quote-serif-right"', 'droplet', 'eject', 'elevator', 'ellipses', 'envelope-closed', 'envelope-open', 'euro', 'excerpt', 'expand-down', 'expand-left', 'expand-right', 'expand-up', 'external-link', 'eye', 'eyedropper', 'file', 'fire', 'flag', 'flash', 'folder', 'fork', 'fullscreen-enter', 'fullscreen-exit', 'globe', 'graph', 'grid-four-up', 'grid-three-up', 'grid-two-up', 'hard-drive', 'header', 'headphones', 'heart', 'home', 'image', 'inbox', 'infinity', 'info', 'italic', 'justify-center', 'justify-left', 'justify-right', 'key', 'laptop', 'layers', 'lightbulb', 'link-broken', 'link-intact', 'list-rich', 'list', 'location', 'lock-locked', 'lock-unlocked', 'loop-circular', 'loop-square', 'loop', 'magnifying-glass', 'map-marker', 'map', 'media-pause', 'media-play', 'media-record', 'media-skip-backward', 'media-skip-forward', 'media-step-backward', 'media-step-forward', 'media-stop', 'medical-cross', 'menu', 'microphone', 'minus', 'monitor', 'moon', 'move', 'musical-note', 'paperclip', 'pencil', 'people', 'person', 'phone', 'pie-chart', 'pin', 'play-circle', 'plus', 'power-standby', 'print', 'project', 'pulse', 'puzzle-piece', 'question-mark', 'rain', 'random', 'reload', 'resize-both', 'resize-height', 'resize-width', 'rss-alt', 'rss', 'script', 'share-boxed', 'share', 'shield', 'signal', 'signpost', 'sort-ascending', 'sort-descending', 'spreadsheet', 'star', 'sun', 'tablet', 'tag', 'tags', 'target', 'task', 'terminal', 'text', 'thumb-down', 'thumb-up', 'timer', 'transfer', 'trash', 'underline', 'vertical-align-bottom', 'vertical-align-center', 'vertical-align-top', 'video', 'volume-high', 'volume-low', 'volume-off', 'warning', 'wifi', 'wrench', 'x', 'yen', 'zoom-in', 'zoom-out'];
-        window.______skills = [
-            '100% a hundred percent',
-            '100 x 100 x 100',
-            '640x480',
-            'SVG Graphics',
-            'active users',
-            'ad products',
-            'adobe',
-            'Avoid hybrid roles',
-            'best practices',
-            'bootstrapping',
-            'casual browsing',
-            'co-founder',
-            'code for people, not machines',
-            'Cohesive Vision',
-            'Compliance Training',
-            'conversion funnels',
-            'conversion rates',
-            'conversion vans',
-            'cryptocurrencies', // @todo: remove this when it's not cool
-            'culture',
-            'DAUs',
-            'Design + Build',
-            'design systems',
-            'Docker in Production',
-            'dormant users',
-            'E*Trade',
-            'entrepreneurship',
-            'event bus',
-            'Exec Team',
-            'Feature Flags',
-            'feeds',
-            'forced repaints',
-            'full stack',
-            'git push --force',
-            'gulp and webpack built times getting out of hand',
-            'javascript',
-            'KPIs',
-            'Lagavulin 16yr',
-            'Let\'s fix the MTA',
-            'lurker',
-            'machines learning',
-            'maximize engagement',
-            'never not working',
-            'New York City',
-            'no one understands CSS Flexbox syntax',
-            'not built with Notepad',
-            'offline',
-            'open source',
-            'Photoshop extrude filter',
-            'Product Manager',
-            'product narrative',
-            'R.I.P. AIM Away Messages',
-            'scalable patterns',
-            'self-documenting',
-            'service workers',
-            'Super Cookies',
-            'sustainable',
-            'swiss army knife',
-            'tech conferences',
-            'THE FIRE HOSE',
-            'Tumblr',
-            'user stories',
-            'Week Over Week',
-            'Why is Tumblr so slow',
-            'Yahoo :(',
-            'you don\'t need a CSS framework',
-            'massive pull requests',
-            'microservices vs. monolith',
-            'data pipelines',
-            'realtime monitoring',
-            'critical path rendering',
-            'tree shaking',
-            'mobile first',
-            'legacy codebase',
-            'team development',
-            'food is good',
-        ];
+    <template data-template-work="work/handy">
+        <div class="browser-chrome">
+            <div class="browser-content" style="background-image:url('/assets/images/handy/thumb-handy.png')">
+                <a class="work-link" href="https://handy.com" target="_handy">handy.com</a>
+            </div>
+        </div>
+        <div class="work-description">
+            <h4>Handy</h4>
+            <p>★★★★★</p>
+            <p>"Claim First" Professional Onboarding Funnel</p>
+        </div>
+    </template>
+
+    <template data-template-work="work/tumblr">
+        <div class="browser-chrome">
+            <div class="browser-content" style="background-image:url('/assets/images/tumblr/thumb-tumblr.png')">
+                <a class="work-link" href="https://tumblr.com" target="_tumblr">tumblr.com</a>
+            </div>
+        </div>
+        <div class="work-description">
+            <h4>Tumblr</h4>
+            <p>It has everything</p>
+            <p>Ask me about deleting my account</p>
+        </div>
+    </template>
+
+    <template data-template-work="work/punkave">
+        <div class="browser-chrome">
+            <div class="browser-content" style="background-image:url('/assets/images/punkave/thumb-punkave.png')">
+                <a class="work-link" href="https://punkave.com" target="_punkave">punkave.com</a>
+            </div>
+        </div>
+        <div class="work-description">
+            <h4>P'unk Avenue</h4>
+            <p>Websites, Not Coffee</p>
+            <p>Websites AND Coffee</p>
+            <p>Coffee</p>
+            <p>COFFEE</p>
+            <p>CCCCccccccccccc</p>
+        </div>
+    </template>
+
+    <template data-template-work="work/egwrk">
+        <div class="browser-chrome">
+            <div class="browser-content" style="background-image:url('/assets/images/egwrk/thumb-egwrk.png')">
+                <a class="work-link" href="https://egwrk.j-hnnybens-n.com" target="_egwrk">egwrk</a>
+            </div>
+        </div>
+        <div class="work-description">
+            <h4>Educated Guess Work</h4>
+            <p>Custom hardware &amp; software</p>
+            <p>Massive projections, motion, &amp; touch interfaces</p>
+        </div>
+    </template>
+
+    <template data-template-work="work/psyop">
+        <div class="browser-chrome">
+            <div class="browser-content" style="background-image:url('/assets/images/psyop/thumb-psyop.png')">
+                <a class="work-link" href="https://psyop.tv" target="_psyop">psyop.tv</a>
+            </div>
+        </div>
+        <div class="work-description">
+            <h4>Psyop</h4>
+            <p>Summer Fun-ternship</p>
+            <p>That summer, I bought my gmail address on Ebay for $1.00</p>
+        </div>
+    </template>
+
+    <section class="🆗🆒 credits" data-scroller>
+        <header class="👽">
+            <h1>
+                j-hnnybens-n.com
+            </h1>
+        </header>
+    </section>
+
+    <main>
+        <nav role="naviation">
+            <select data-menu>
+                <option disabled selected value="">work</option>
+                <option value="work/splash">splash (2017-now) Senior Full Stack Engineer</option>
+                <option value="work/handy">handy (2016-2017) Senior Full Stack Engineer</option>
+                <option value="work/tumblr">tumblr (2012-2016) Product Manager, Staff Eng, Lead Eng, Product Eng</option>
+                <option value="work/punkave">punkave (2007-2012) Product Engineer</option>
+                <option value="work/egwrk">egwrk (2006-2010) Co-founder</option>
+                <option value="work/psyop">psyop (2004) Creative Intern</option>
+            </select>
+        </nav>
+        <section class="🆗🆒 work" data-work></section>
+        <button class="clear-work" data-clear-work>
+            <svg class="icon" viewBox="0 0 8 8">
+                <use xlink:href="/assets/svg/open-iconic.svg#x"></use>
+            </svg>
+        </button>
+    </main>
+
+    <script data-bootstrap type="application/json">
+        {
+            "icons": [ "account-login", "account-logout", "action-redo", "action-undo", "align-center", "align-left", "align-right", "aperture", "arrow-bottom", "arrow-circle-bottom", "arrow-circle-left", "arrow-circle-right", "arrow-circle-top", "arrow-left", "arrow-right", "arrow-thick-bottom", "arrow-thick-left", "arrow-thick-right", "arrow-thick-top", "arrow-top", "audio-spectrum", "audio", "badge", "ban", "bar-chart", "basket", "battery-empty", "battery-full", "beaker", "bell", "bluetooth", "bold", "bolt", "book", "bookmark", "box", "briefcase", "british-pound", "browser", "brush", "bug", "bullhorn", "calculator", "calendar", "camera-slr", "caret-bottom", "caret-left", "caret-right", "caret-top", "cart", "chat", "check", "chevron-bottom", "chevron-left", "chevron-right", "chevron-top", "circle-check", "circle-x", "clipboard", "clock", "cloud-download", "cloud-upload", "cloud", "cloudy", "code", "cog", "collapse-down", "collapse-left", "collapse-right", "collapse-up", "command", "comment-square", "compass", "contrast", "copywriting", "credit-card", "crop", "dashboard", "data-transfer-download", "data-transfer-upload", "delete", "dial", "document", "dollar", "double-quote-sans-left", "double-quote-sans-right", "double-quote-serif-left", "double-quote-serif-right", "droplet", "eject", "elevator", "ellipses", "envelope-closed", "envelope-open", "euro", "excerpt", "expand-down", "expand-left", "expand-right", "expand-up", "external-link", "eye", "eyedropper", "file", "fire", "flag", "flash", "folder", "fork", "fullscreen-enter", "fullscreen-exit", "globe", "graph", "grid-four-up", "grid-three-up", "grid-two-up", "hard-drive", "header", "headphones", "heart", "home", "image", "inbox", "infinity", "info", "italic", "justify-center", "justify-left", "justify-right", "key", "laptop", "layers", "lightbulb", "link-broken", "link-intact", "list-rich", "list", "location", "lock-locked", "lock-unlocked", "loop-circular", "loop-square", "loop", "magnifying-glass", "map-marker", "map", "media-pause", "media-play", "media-record", "media-skip-backward", "media-skip-forward", "media-step-backward", "media-step-forward", "media-stop", "medical-cross", "menu", "microphone", "minus", "monitor", "moon", "move", "musical-note", "paperclip", "pencil", "people", "person", "phone", "pie-chart", "pin", "play-circle", "plus", "power-standby", "print", "project", "pulse", "puzzle-piece", "question-mark", "rain", "random", "reload", "resize-both", "resize-height", "resize-width", "rss-alt", "rss", "script", "share-boxed", "share", "shield", "signal", "signpost", "sort-ascending", "sort-descending", "spreadsheet", "star", "sun", "tablet", "tag", "tags", "target", "task", "terminal", "text", "thumb-down", "thumb-up", "timer", "transfer", "trash", "underline", "vertical-align-bottom", "vertical-align-center", "vertical-align-top", "video", "volume-high", "volume-low", "volume-off", "warning", "wifi", "wrench", "x", "yen", "zoom-in", "zoom-out"],
+            "credits": [
+                "100% a hundred percent",
+                "100 x 100 x 100",
+                "640x480",
+                "SVG Graphics",
+                "active users",
+                "ad products",
+                "adobe",
+                "Avoid hybrid roles",
+                "best practices",
+                "bootstrapping",
+                "casual browsing",
+                "co-founder",
+                "code for people, not machines",
+                "Cohesive Vision",
+                "Compliance Training",
+                "conversion funnels",
+                "conversion rates",
+                "conversion vans",
+                "cryptocurrencies",
+                "culture",
+                "DAUs",
+                "Design + Build",
+                "design systems",
+                "Docker in Production",
+                "dormant users",
+                "E*Trade",
+                "entrepreneurship",
+                "event bus",
+                "Exec Team",
+                "Feature Flags",
+                "feeds",
+                "forced repaints",
+                "full stack",
+                "git push --force",
+                "hey our gulp and webpack build times getting out of hand",
+                "javascript",
+                "KPIs",
+                "Lagavulin 16yr",
+                "Let's fix the MTA",
+                "lurker",
+                "machines learning",
+                "maximize engagement",
+                "never not working",
+                "New York City",
+                "no one understands CSS Flexbox syntax",
+                "not built with Notepad",
+                "offline",
+                "open source",
+                "Photoshop extrude filter",
+                "Product Manager",
+                "product narrative",
+                "R.I.P. AIM Away Messages",
+                "scalable patterns",
+                "self-documenting",
+                "service workers",
+                "Super Cookies",
+                "sustainable",
+                "swiss army knife",
+                "tech conferences",
+                "THE FIRE HOSE",
+                "Tumblr",
+                "user stories",
+                "Week Over Week",
+                "Why is Tumblr so slow",
+                "Yahoo :(",
+                "you don\"t need a CSS framework",
+                "massive pull requests",
+                "microservices vs. monolith",
+                "data pipelines",
+                "realtime monitoring",
+                "critical path rendering",
+                "tree shaking",
+                "mobile first",
+                "legacy codebase",
+                "team development",
+                "food is good",
+                "consulting",
+                "proper critique",
+                "\"Rails\"",
+                "web standards",
+                "semantic web",
+                "I know Tim Holman",
+                "shipping containers",
+                "cats & dogs are pure",
+                "high order functions are just wrappers",
+                "be responsible",
+                "MONTHLY ACTIVE USERS",
+                "Traffic is not indicative of success",
+                "is it RESTful enough???",
+                "pizza"
+            ]
+        }
     </script>
-    <script src="main.js"></script>
+    <script src="/main.js"></script>
 
 </body>
 </html>
