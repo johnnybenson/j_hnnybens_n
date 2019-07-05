@@ -1,32 +1,52 @@
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-const entryJs = './src/js/index.js';
-const buildPath = __dirname + '/build';
+const buildPath = `${__dirname}/build`;
 
 module.exports = {
-	entry: entryJs,
-	output: {
-		path: buildPath,
-		filename: '[name].js'
+	"mode": "production",
+	"entry": "./src/js/index.js",
+	"output": {
+		"path": buildPath,
+		"filename": "[name].[chunkhash:8].js",
 	},
-	plugins: [
-		new CopyWebpackPlugin([
+	"module": {
+		"rules": [
 			{
-				from: './src/assets',
-				to: buildPath + '/assets',
+				"enforce": "pre",
+				"test": /\.(js|jsx)$/,
+				"exclude": /node_modules/,
+				"use": "eslint-loader"
 			},
 			{
-				from: './src/error.php',
-				to: buildPath,
+				"test": /\.js$/,
+				"exclude": /node_modules/,
+				"use": {
+					"loader": "babel-loader",
+					"options": {
+						"presets": ['@babel/preset-env']
+					}
+				}
 			},
 			{
-				from: './src/favicon.ico',
-				to: buildPath,
+				"test": /\.scss$/,
+				"use": [
+					MiniCssExtractPlugin.loader,
+					"css-loader",
+					"sass-loader"
+				]
 			},
 			{
-				from: './src/robots.txt',
-				to: buildPath,
-			}
-		]),
-	],
+				test: /\.(html|css)$/,
+				use: [
+					{
+						loader: 'file-loader',
+						options: {
+							context: 'build'
+						},
+					},
+				],
+			},
+		]
+	},
+	"plugins": [new MiniCssExtractPlugin({ filename: "[name]-[contenthash:8].css" })]
 };

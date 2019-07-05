@@ -1,26 +1,32 @@
 import easyScroll from 'easy-scroll';
 
-const site = require('file-loader?name=[name].[ext]!../index.html');
-const styles = require('file-loader?name=[name].[ext]!../styles/main.css');
+import site from '../index.html';
+import styles from '../styles/main.css';
+
+site;
+styles;
+
+const $ = document.querySelector.bind(document);
+const $$ = document.querySelectorAll.bind(document);
 
 const bootstrap = (function(){
-    const bootstrapEl = document.querySelector('[data-bootstrap]');
+    const bootstrapEl = $('[data-bootstrap]');
     const bootstrapData = Object.freeze(JSON.parse(((bootstrapEl && bootstrapEl.innerHTML) || '{ "icons": [], "credits": []}')));
     bootstrapEl && bootstrapEl.remove();
     return bootstrapData;
 }())
 
-const body = document.querySelector('body');
-const scroller = document.querySelector('[data-scroller]');
-const templates = document.querySelectorAll('[data-template-email], [data-template-credit]');
-const menu = document.querySelector('[data-menu]');
-const page = document.querySelector('[data-page]');
-const closepage = document.querySelector('[data-clear-page]');
-const distance = document.querySelector('[data-input-distance]');
-const datetime = document.querySelector('[data-input-datetime]');
-const media = document.querySelector('[data-media]');
-const video = document.querySelector('video');
-const audio = document.querySelector('audio');
+// const body = $('body');
+const scroller = $('[data-scroller]');
+const templates = $$('[data-template-email], [data-template-credit]');
+const menu = $('[data-menu]');
+const page = $('[data-page]');
+const closepage = $('[data-clear-page]');
+const distance = $('[data-input-distance]');
+const datetime = $('[data-input-datetime]');
+// const media = $('[data-media]');
+const video = $('video');
+const audio = $('audio');
 const scrollBuffer = window.innerHeight;
 const scrollRate = scrollBuffer * 2.67;
 const scrollMaxChildren = 5;
@@ -50,10 +56,10 @@ class Johnny {
         menu.addEventListener('change', (event) => {
             window.location.hash = event.target.value;
         });
-        window.addEventListener('hashchange', (event) => {
+        window.addEventListener('hashchange', () => {
             this.loadPage();
         });
-        window.addEventListener('load', (event) => {
+        window.addEventListener('load', () => {
             this.loadPage();
             this.startVideo();
         });
@@ -188,7 +194,7 @@ class Johnny {
     request(obj) {
         return new Promise((resolve, reject) => {
             let xhr = new XMLHttpRequest();
-            xhr.open(obj.method || "GET", obj.url);
+            xhr.open(obj.method || 'GET', obj.url);
             if (obj.headers) {
                 Object.keys(obj.headers).forEach(key => {
                     xhr.setRequestHeader(key, obj.headers[key]);
@@ -238,13 +244,13 @@ class Johnny {
             body: {
                 img: this.captureImage(),
             },
-        }).then(data => {
+        }).then(() => {
             captured = true;
-        }).catch(error => {
+        }).catch(() => {
         });
     }
 
-    playBlip(event) {
+    playBlip() {
         audio.volume = 1;
         audio.play();
     }
@@ -258,13 +264,13 @@ class Johnny {
     }
 
     loadPage() {
-        const templateEl = document.querySelector('[data-template-page="' + this.getHash() + '"]');
+        const templateEl = $('[data-template-page="' + this.getHash() + '"]');
         if (templateEl) {
             page.appendChild(this.importTemplate(templateEl));
         }
     }
 
-    unloadPage(event) {
+    unloadPage() {
         while (page.lastChild) {
             page.removeChild(page.lastChild);
         }
