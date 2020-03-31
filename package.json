@@ -13,7 +13,7 @@
     "copy-webpack-plugin": "^4.3.1",
     "file-loader": "^0.8",
     "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.10.0"
+    "webpack-dev-server": "^3.1.11"
   },
   "dependencies": {
     "easy-scroll": "^0.5.1"
