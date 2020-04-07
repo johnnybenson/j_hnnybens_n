@@ -10,8 +10,11 @@
   "author": "johnnybenson",
   "license": "MIT",
   "devDependencies": {
+    "acorn": ">=5.7.4",
     "copy-webpack-plugin": "^5.1.1",
     "file-loader": "^6.0.0",
+    "kind-of": ">=6.0.3",
+    "minimist": ">=0.2.1",
     "webpack": "^4.42.1",
     "webpack-dev-server": "^3.10.3"
   },
